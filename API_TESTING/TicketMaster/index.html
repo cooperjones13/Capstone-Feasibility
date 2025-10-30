@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>TicketMaster — Test</title>
+    <style>
+        :root {font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;}
+        body {margin: 2rem; background: #f6f8fb; color: #111;}
+        .btn {
+            display: inline-block;
+            padding: 0.6rem 1rem;
+            font-size: 1rem;
+            border: 0;
+            border-radius: 6px;
+            background: #0366d6;
+            color: #fff;
+            cursor: pointer;
+        }
+        .btn:active { transform: translateY(1px); }
+    </style>
+</head>
+<body>
+    <h1>Boilerplate page with button</h1>
+    <button id="actionBtn" class="btn" aria-pressed="false">Click me</button>
+    <p id="status" aria-live="polite" style="margin-top:1rem"></p>
+
+    <script defer>
+        const btn = document.getElementById('actionBtn');
+        const status = document.getElementById('status');
+        const ticketmasterURL = `https://app.ticketmaster.com/discovery/v2/attractions.json?apikey=p6tR5wi2djdWGZBVVl5Fwm71hn3`
+
+        async function getAttractions(){
+            const response  = await fetch(ticketmasterURL,{
+                mode:"cors"
+            });
+            const json = await response.json();
+
+            console.log(json);
+            return json;
+        }
+
+        btn.addEventListener('click', async () => {
+
+            // let pressed = btn.getAttribute('aria-pressed') === 'true';
+            // btn.setAttribute('aria-pressed', String(!pressed));
+            // pressed = !pressed
+
+            // if(pressed){
+            //     console.log()
+            // }
+
+            const json = getAttractions();
+            
+
+            // status.textContent = 'Button clicked. aria-pressed=' + btn.getAttribute('aria-pressed');
+            // console.log('Button clicked', { ariaPressed: btn.getAttribute('aria-pressed') });
+        });
+    </script>
+</body>
+</html>
