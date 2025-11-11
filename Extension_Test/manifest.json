@@ -1,0 +1,10 @@
+{
+  "manifest_version": 3,
+  "name": "Youtube Video Title Reader",
+  "version": "1.0",
+  "description": "Displays the title of the first YouTube Video on the YouTube Homepage.",
+  "permissions": ["activeTab", "scripting"],
+  "action": {
+    "default_popup": "popup.html"
+  }
+}
